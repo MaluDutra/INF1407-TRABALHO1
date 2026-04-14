@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Remover Música</title>
+</head>
+<body>
+    <h1>Remover Música</h1>
+
+    <p>Tem certeza que deseja remover "{{ musica.titulo }}" de {{ musica.artista }}?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, remover</button>
+    </form>
+
+    <a href="{% url 'listar_musicas' %}">Cancelar</a>
+</body>
+</html>

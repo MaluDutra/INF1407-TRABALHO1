@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Músicas</title>
+</head>
+<body>
+    <h1>Minhas Músicas</h1>
+
+    <p>Olá, {{ request.user.username }}!</p>
+
+    <a href="{% url 'adicionar_musica' %}">Adicionar música</a>
+    <a href="{% url 'logout' %}">Sair</a>
+
+    <hr>
+
+    {% if musicas %}
+        <ul>
+            {% for musica in musicas %}
+                <li>
+                    <strong>{{ musica.titulo }}</strong> - {{ musica.artista }}
+                    {% if musica.album %} | Álbum: {{ musica.album }} {% endif %}
+                    {% if musica.genero %} | Gênero: {{ musica.genero }} {% endif %}
+                    {% if musica.ano %} | Ano: {{ musica.ano }} {% endif %}
+
+                    <a href="{% url 'editar_musica' musica.id %}">Editar</a>
+                    <a href="{% url 'remover_musica' musica.id %}">Remover</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Você ainda não cadastrou músicas.</p>
+    {% endif %}
+</body>
+</html>

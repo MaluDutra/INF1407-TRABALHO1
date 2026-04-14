@@ -1,6 +1,14 @@
 from django.urls import path
 from Playlists import views
 
+# urlpatterns = [
+#     path('', views.home),
+# ] 
+
+
 urlpatterns = [
-    path('', views.home),
-] 
+    path('', views.listar_musicas, name='listar_musicas'),
+    path('adicionar/', views.adicionar_musica, name='adicionar_musica'),
+    path('editar/<int:id>/', views.editar_musica, name='editar_musica'),
+    path('remover/<int:id>/', views.remover_musica, name='remover_musica'),
+]

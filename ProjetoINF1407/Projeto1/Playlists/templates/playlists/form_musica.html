@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ acao }} Música</title>
+</head>
+<body>
+    <h1>{{ acao }} Música</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a href="{% url 'listar_musicas' %}">Voltar</a>
+</body>
+</html>
