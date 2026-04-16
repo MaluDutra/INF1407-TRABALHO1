@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout
 from Playlists.models import Musica
 from Playlists.forms import MusicaForm
 
@@ -56,13 +57,17 @@ def cadastro(request):
     if request.method == 'POST':
         formulario = UserCreationForm(request.POST)
         if formulario.is_valid():
-            formulario.save()
+            usuario = formulario.save()
+            login(request, usuario) # Loga o usuário após o cadastro
             return redirect('homepage')
     else:
         formulario = UserCreationForm()
     contexto = {'form': formulario }
     return render(request, 'playlists/cadastro.html', contexto)
 
-def logout(request):
+def logout_usuario(request):
+    # logout(request)
+    # return render(request, 'playlists/home.html')
     return render(request, 'playlists/logout.html')
+
  

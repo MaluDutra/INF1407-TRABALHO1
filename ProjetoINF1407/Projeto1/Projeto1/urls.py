@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include('Playlists.urls')),
     path('cadastro/', views.cadastro, name='cadastro'),
     path('login/', LoginView.as_view(template_name='playlists/login.html'), name='login'),
-    path('meu-logout/', views.logout, name='meu-logout'),
+    path('meu-logout/', views.logout_usuario, name='meu-logout'),
     path('logout/', LogoutView.as_view(next_page=reverse_lazy('homepage')), name='logout'),
 ]
 
