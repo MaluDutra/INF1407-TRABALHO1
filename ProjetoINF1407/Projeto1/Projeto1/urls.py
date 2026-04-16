@@ -16,20 +16,18 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
-from django.contrib.auth import views as auth_views
-
-
-# urlpatterns = [
-#     path("admin/", admin.site.urls),
-#     path('/', include('Playlists.urls')),
-# ]
-
+from django.urls import path
+from django.urls.conf import include
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls.base import reverse_lazy
+from Playlists import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Playlists.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='Playlists/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('login/', LoginView.as_view(template_name='playlists/login.html'), name='login'),
+    path('meu-logout/', views.logout, name='meu-logout'),
+    path('logout/', LogoutView.as_view(next_page=reverse_lazy('homepage')), name='logout'),
 ]
 

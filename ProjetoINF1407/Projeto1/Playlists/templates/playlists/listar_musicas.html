@@ -7,10 +7,10 @@
 <body>
     <h1>Minhas Músicas</h1>
 
-    <p>Olá, {{ request.user.username }}!</p>
+    <p>Olá, {{ user.username }}!</p>
 
     <a href="{% url 'adicionar_musica' %}">Adicionar música</a>
-    <a href="{% url 'logout' %}">Sair</a>
+    <a href="{% url 'meu-logout' %}">Sair</a>
 
     <hr>
 
