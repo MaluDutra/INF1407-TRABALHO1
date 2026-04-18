@@ -1,25 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %}{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css_extra %}{% endblock %}
 </head>
 <body>
-    <h1>Site Seguro</h1>
+    <header class="site-header">
+        <div class="logo-area">
+            <div class="logo-icon">♪</div>
+            <span class="logo-text">PlaylistHub</span>
+        </div>
 
-    <div>
-        <a href="/">Home</a>
+        <nav class="site-nav">
+            <a href="{% url 'homepage' %}" class="nav-link">Início</a>
 
-        {% if user.is_authenticated %}
-            | <a href="{% url 'sec-password_change' %}">Trocar senha</a>
-            | Logado como {{ user.username }}
-        {% else %}
-            | Visitante
-        {% endif %}
-    </div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'listar_musicas' %}" class="nav-link">Músicas</a>
+                <a href="{% url 'sec-password_change' %}" class="nav-link">Trocar senha</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+                <a href="{% url 'cadastro' %}" class="nav-link">Criar conta</a>
+            {% endif %}
+        </nav>
+    </header>
 
-    <hr>
-
-    {% block conteudo %}{% endblock %}
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
 </body>
 </html>
