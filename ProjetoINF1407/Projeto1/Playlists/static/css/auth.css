@@ -8,90 +8,182 @@
 
 .auth-card {
     width: 100%;
-    max-width: 460px;
-    background: rgba(18, 22, 36, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 480px;
+    background: rgba(20, 24, 38, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 24px;
-    padding: 36px;
-    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    padding: 40px 42px;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+}
+
+.auth-card-login {
+    position: relative;
+}
+
+.auth-icon-box {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 24px auto;
+    border-radius: 16px;
+    background: rgba(242, 120, 149, 0.10);
+    border: 1px solid rgba(242, 120, 149, 0.18);
+    color: #f27895;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
 }
 
 .auth-title {
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 10px;
     text-align: center;
+    color: #f5f5f5;
+    font-weight: 800;
 }
 
 .auth-subtitle {
-    color: #9ea3b5;
+    color: #81879b;
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 34px;
     line-height: 1.6;
+    font-size: 17px;
 }
 
-.auth-form p {
-    margin-bottom: 18px;
+.auth-form {
+    margin-top: 8px;
 }
 
-.auth-form label {
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
     display: block;
-    margin-bottom: 8px;
-    color: #d6d9e3;
-    font-size: 14px;
+    margin-bottom: 10px;
+    color: #b5b9c8;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .auth-form input[type="text"],
 .auth-form input[type="password"],
 .auth-form input[type="email"] {
     width: 100%;
-    padding: 14px 16px;
+    padding: 16px 18px;
     border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background-color: #0b1020;
-    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #1b2030;
+    color: #f5f5f5;
     outline: none;
-    font-size: 15px;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+.auth-form input::placeholder {
+    color: #6f7588;
 }
 
 .auth-form input:focus {
     border-color: #f27895;
-    box-shadow: 0 0 0 3px rgba(242, 120, 149, 0.15);
+    box-shadow: 0 0 0 3px rgba(242, 120, 149, 0.14);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 52px !important;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #7d8397;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.toggle-password:hover {
+    color: #f27895;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: -4px;
+    margin-bottom: 24px;
+}
+
+.forgot-password a {
+    color: #f27895;
+    font-size: 15px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
 }
 
 .auth-button {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 4px;
     cursor: pointer;
+    font-size: 18px;
+    border: none;
 }
 
-.auth-links {
-    margin-top: 24px;
-    text-align: center;
+.auth-divider {
     display: flex;
-    justify-content: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin: 28px 0 26px 0;
+    color: #747b8f;
 }
 
-.auth-links a {
-    color: #f08aa4;
-    font-size: 14px;
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.10);
 }
 
-.auth-links a:hover {
+.auth-divider span {
+    font-size: 15px;
+}
+
+.auth-footer-text {
+    text-align: center;
+    color: #7f8598;
+    font-size: 16px;
+}
+
+.auth-footer-text a {
+    color: #f27895;
+    font-weight: 700;
+}
+
+.auth-footer-text a:hover {
     text-decoration: underline;
+}
+
+.form-errors,
+.field-error {
+    color: #ff9db3;
+    font-size: 14px;
+    margin-top: 8px;
 }
 
 .errorlist {
     list-style: none;
-    color: #ff9db3;
-    font-size: 14px;
-    margin-bottom: 10px;
+    margin: 0;
+    padding: 0;
 }
 
 .helptext {
-    display: block;
-    color: #8e94a8;
-    font-size: 12px;
-    margin-top: 6px;
+    display: none;
 }
