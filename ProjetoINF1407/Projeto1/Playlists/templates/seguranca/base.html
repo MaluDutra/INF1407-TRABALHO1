@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body>
+    <h1>Site Seguro</h1>
+
+    <div>
+        <a href="/">Home</a>
+
+        {% if user.is_authenticated %}
+            | <a href="{% url 'sec-password_change' %}">Trocar senha</a>
+            | Logado como {{ user.username }}
+        {% else %}
+            | Visitante
+        {% endif %}
+    </div>
+
+    <hr>
+
+    {% block conteudo %}{% endblock %}
+</body>
+</html>
