@@ -1,16 +1,88 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-</head>
-<body>
-    <h1>Cadastro</h1>
+{% extends 'seguranca/base.html' %}
+{% load static %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Entrar</button>
-    </form>
-</body>
-</html>
+{% block titulo %}Cadastro{% endblock %}
+
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<section class="auth-section">
+    <div class="auth-card auth-card-login">
+        <div class="auth-icon-box">+</div>
+
+        <h2 class="auth-title">Criar conta</h2>
+        <p class="auth-subtitle">Cadastre-se para organizar suas playlists e músicas</p>
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Usuário</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="field-error">{{ form.username.errors }}</div>
+                {% endif %}
+                {% if form.username.help_text %}
+                    <small class="custom-help">{{ form.username.help_text }}</small>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Senha</label>
+                <div class="password-wrapper">
+                    {{ form.password1 }}
+                    <button type="button" class="toggle-password" onclick="togglePassword('id_password1')">👁</button>
+                </div>
+                {% if form.password1.errors %}
+                    <div class="field-error">{{ form.password1.errors }}</div>
+                {% endif %}
+                {% if form.password1.help_text %}
+                    <div class="custom-help">{{ form.password1.help_text|safe }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">Confirmar senha</label>
+                <div class="password-wrapper">
+                    {{ form.password2 }}
+                    <button type="button" class="toggle-password" onclick="togglePassword('id_password2')">👁</button>
+                </div>
+                {% if form.password2.errors %}
+                    <div class="field-error">{{ form.password2.errors }}</div>
+                {% endif %}
+                {% if form.password2.help_text %}
+                    <small class="custom-help">{{ form.password2.help_text }}</small>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-button">Criar conta</button>
+        </form>
+
+        <div class="auth-divider">
+            <span>ou</span>
+        </div>
+
+        <div class="auth-footer-text">
+            Já tem uma conta?
+            <a href="{% url 'login' %}">Entrar</a>
+        </div>
+    </div>
+</section>
+
+<script>
+function togglePassword(fieldId) {
+    const input = document.getElementById(fieldId);
+    if (input) {
+        input.type = input.type === "password" ? "text" : "password";
+    }
+}
+</script>
+{% endblock %}

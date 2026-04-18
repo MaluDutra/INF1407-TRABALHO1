@@ -187,3 +187,39 @@
 .helptext {
     display: none;
 }
+
+.custom-help {
+    display: block;
+    margin-top: 10px;
+    color: #8b91a6;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.custom-help ul {
+    margin-top: 8px;
+    margin-left: 18px;
+}
+
+.custom-help li {
+    margin-bottom: 6px;
+}
+
+.field-error ul,
+.form-errors ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.field-error,
+.form-errors {
+    color: #ff9db3;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.auth-card .helptext {
+    display: none;
+}
