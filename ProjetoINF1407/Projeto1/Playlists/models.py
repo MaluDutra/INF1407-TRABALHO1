@@ -87,4 +87,5 @@ def salvar_perfil_usuario(sender, instance, **kwargs):
 
     Esse sinal é executado após o salvamento de um objeto User.
     """
-    instance.perfil.save()
+    perfil, _ = Perfil.objects.get_or_create(user=instance)
+    perfil.save()

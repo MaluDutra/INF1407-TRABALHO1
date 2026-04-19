@@ -65,12 +65,12 @@ def cadastro(request):
     else:
         formulario = UserCreationForm()
     contexto = {'form': formulario }
-    return render(request, 'playlists/cadastro.html', contexto)
+    return render(request, 'seguranca/cadastro.html', contexto)
 
 def logout_usuario(request):
     # logout(request)
     # return render(request, 'playlists/home.html')
-    return render(request, 'playlists/logout.html')
+    return render(request, 'seguranca/logout.html')
 
 
 @login_required
