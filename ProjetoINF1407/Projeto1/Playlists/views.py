@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
 from Playlists.models import Musica
 from Playlists.forms import MusicaForm
+from .models import Perfil
+from .forms import PerfilForm
 
 def home(request):
     return render(request, "playlists/home.html")
@@ -70,4 +72,21 @@ def logout_usuario(request):
     # return render(request, 'playlists/home.html')
     return render(request, 'playlists/logout.html')
 
- 
+
+@login_required
+def perfil(request):
+    perfil, created = Perfil.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil')
+    else:
+        form = PerfilForm(instance=perfil)
+
+    contexto = {
+        'perfil': perfil,
+        'form': form,
+    }
+    return render(request, 'seguranca/perfil.html', contexto)

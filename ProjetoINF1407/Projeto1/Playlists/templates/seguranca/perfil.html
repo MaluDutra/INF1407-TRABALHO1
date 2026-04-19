@@ -1,0 +1,60 @@
+{% extends 'seguranca/base.html' %}
+{% load static %}
+
+{% block titulo %}Meu Perfil{% endblock %}
+
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<section class="profile-section">
+    <div class="profile-card">
+        <div class="profile-header">
+            {% if perfil.foto_url %}
+                <img src="{{ perfil.foto_url }}" alt="Foto de perfil" class="profile-avatar-img">
+            {% else %}
+                <div class="profile-avatar-placeholder">
+                    {{ user.username|first|upper }}
+                </div>
+            {% endif %}
+
+            <div class="profile-user-info">
+                <h2>Meu Perfil</h2>
+                <p class="profile-username">@{{ user.username }}</p>
+                <p class="profile-email">{{ user.email|default:"E-mail não informado" }}</p>
+            </div>
+        </div>
+
+        <div class="profile-body">
+            <form method="post" class="profile-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ form.foto_url.id_for_label }}">Foto de perfil</label>
+                    {{ form.foto_url }}
+                    {% if form.foto_url.errors %}
+                        <div class="field-error">{{ form.foto_url.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-primary profile-button">
+                    Salvar foto
+                </button>
+            </form>
+
+            <div class="profile-actions">
+                <a href="{% url 'sec-password_change' %}" class="btn btn-secondary">
+                    Trocar senha
+                </a>
+                <a href="{% url 'listar_musicas' %}" class="btn btn-secondary">
+                    Ver músicas
+                </a>
+                <a href="{% url 'homepage' %}" class="btn btn-secondary">
+                    Voltar ao início
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

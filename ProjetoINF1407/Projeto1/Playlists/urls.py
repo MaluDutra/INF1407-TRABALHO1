@@ -10,6 +10,7 @@ urlpatterns = [
     path('adicionar/', views.adicionar_musica, name='adicionar_musica'),
     path('editar/<int:id>/', views.editar_musica, name='editar_musica'),
     path('remover/<int:id>/', views.remover_musica, name='remover_musica'),
+    path('perfil/', views.perfil, name='perfil'),
     path(
     'seguranca/password_change/',
     PasswordChangeView.as_view(
@@ -26,4 +27,6 @@ path(
     ),
     name='sec-password_change_done'
 ),
+
+
 ]
