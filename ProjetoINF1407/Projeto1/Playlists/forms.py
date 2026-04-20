@@ -27,6 +27,13 @@ class AtualizarUsuarioForm(forms.ModelForm):
             'class': 'form-control'
         })
     )
+    musica_favorita = forms.ModelChoiceField(
+        queryset=Musica.objects.none(),
+        required=False,
+        label='Música favorita',
+        empty_label='Selecione sua música favorita',
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
 
     class Meta:
         model = User
@@ -44,8 +51,12 @@ class AtualizarUsuarioForm(forms.ModelForm):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
-        if self.user and hasattr(self.user, 'perfil'):
-            self.fields['foto_url'].initial = self.user.perfil.foto_url
+        if self.user is not None:
+            self.fields['musica_favorita'].queryset = Musica.objects.filter(usuario=self.user)
+
+            if hasattr(self.user, 'perfil'):
+                self.fields['foto_url'].initial = self.user.perfil.foto_url
+                self.fields['musica_favorita'].initial = self.user.perfil.musica_favorita
 
     def save(self, commit=True):
         user = super().save(commit=commit)
@@ -53,5 +64,6 @@ class AtualizarUsuarioForm(forms.ModelForm):
         if self.user:
             perfil, _ = Perfil.objects.get_or_create(user=user)
             perfil.foto_url = self.cleaned_data['foto_url']
+            perfil.musica_favorita = self.cleaned_data['musica_favorita']
             perfil.save()
         return user

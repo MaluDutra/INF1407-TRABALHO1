@@ -27,6 +27,18 @@
         </div>
 
         <div class="profile-body">
+            {% if perfil.musica_favorita %}
+                <div class="profile-detail">
+                    <strong>Música favorita:</strong>
+                    <p>{{ perfil.musica_favorita.titulo }} - {{ perfil.musica_favorita.artista }}</p>
+                </div>
+            {% else %}
+                <div class="profile-detail">
+                    <strong>Música favorita:</strong>
+                    <p>Nenhuma música favorita selecionada.</p>
+                </div>
+            {% endif %}
+
             <div class="profile-actions">
                 <a href="{% url 'atualizar_dados' %}" class="btn btn-primary">
                     Atualizar dados

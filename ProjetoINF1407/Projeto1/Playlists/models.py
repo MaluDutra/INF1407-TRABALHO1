@@ -59,11 +59,18 @@ class Perfil(models.Model):
 
     Como o modelo User do Django não possui campo de foto de perfil,
     este modelo foi criado para armazenar dados complementares,
-    como a URL da foto.
+    como a URL da foto e a música favorita.
     """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     foto_url = models.URLField(blank=True, null=True)
+    musica_favorita = models.ForeignKey(
+        'Musica',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name='Música favorita'
+    )
 
     def __str__(self):
         """
