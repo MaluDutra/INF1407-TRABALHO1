@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
 from pathlib import Path
+from Projeto1 import utils
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -32,6 +32,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
     'http://localhost:8000',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -122,6 +123,42 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'homepage'
+LOGOUT_REDIRECT_URL = 'login'
+
+# Para a funcionalidade de recuperação de senha
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+# Para servir arquivos de mídia
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# Verificar a porta passada como argumento ou usar a porta padrão
+# Usada para configurar o domínio no Codespace, mas também pode ser útil para rodar localmente em uma porta diferente da 8000
+PORTA_DJANGO = utils.detectar_porta()
+AMBIENTE = utils.detectar_ambiente()
+PROTOCOLO = utils.detectar_protocolo()
+DOMINIO = utils.detectar_dominio()
+
+if AMBIENTE == "CODESPACE":
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https',)
+    USE_X_FORWARDED_HOST = True
+    CS_DOMAIN = DOMINIO
+elif AMBIENTE == "LOCAL":
+    # Configurações para rodar localmente
+    CS_DOMAIN = f"localhost:{PORTA_DJANGO}"
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'MeuSite API',
+    'DESCRIPTION': 'API do sistema MeuSite',
+    'VERSION': '1.0.0',
+    
+    # Muito útil no Codespace
+    'SERVERS': [
+        {'url': f'{PROTOCOLO}://{CS_DOMAIN}'},
+    ]
+}
+
