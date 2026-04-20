@@ -18,6 +18,12 @@
         <ul>
             {% for musica in musicas %}
                 <li>
+                    {% if musica.imagem_url %}
+                        <img src="{{ musica.imagem_url }}" alt="Imagem de {{ musica.titulo }}" width="120" height="120">
+                    {% else %}
+                        <img src="/static/images/default-music.jpg" alt="Imagem padrão de música" width="120" height="120">
+                    {% endif %}
+
                     <strong>{{ musica.titulo }}</strong> - {{ musica.artista }}
                     {% if musica.album %} | Álbum: {{ musica.album }} {% endif %}
                     {% if musica.genero %} | Gênero: {{ musica.genero }} {% endif %}

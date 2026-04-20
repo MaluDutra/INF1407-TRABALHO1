@@ -36,6 +36,11 @@ class Musica(models.Model):
         blank=True,
         help_text='Insira o ano de lançamento'
     )
+    imagem_url = models.URLField(
+        blank=True,
+        null=True,
+        help_text='URL da capa da música'
+    )
 
     # Relaciona cada música ao usuário que a cadastrou.
     # Se o usuário for removido, suas músicas também serão excluídas.
