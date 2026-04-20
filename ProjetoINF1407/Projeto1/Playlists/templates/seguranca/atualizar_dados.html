@@ -1,0 +1,58 @@
+{% extends 'seguranca/base.html' %}
+{% load static %}
+
+{% block titulo %}Editar Dados{% endblock %}
+
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<section class="profile-section">
+    <div class="profile-card">
+        <div class="profile-header">
+            <h2>Editar Dados do Usuário</h2>
+            <p class="profile-username">@{{ user.username }}</p>
+        </div>
+
+        <div class="profile-body">
+            <form method="post" class="profile-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="field-error">{{ form.username.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="field-error">{{ form.email.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.foto_url.id_for_label }}">{{ form.foto_url.label }}</label>
+                    {{ form.foto_url }}
+                    {% if form.foto_url.errors %}
+                        <div class="field-error">{{ form.foto_url.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary profile-button">
+                        Salvar alterações
+                    </button>
+                    <a href="{% url 'perfil' %}" class="btn btn-secondary">
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

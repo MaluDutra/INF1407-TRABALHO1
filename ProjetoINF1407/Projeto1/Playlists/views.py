@@ -2,15 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
-from Playlists.models import Musica
-from Playlists.forms import MusicaForm
-from .models import Perfil
-from .forms import PerfilForm
+from Playlists.models import Musica, Perfil
+from Playlists.forms import MusicaForm, AtualizarUsuarioForm
 
 def home(request):
     return render(request, "playlists/home.html")
 
-# CRUD de adicionar músicas
+# CRUD de Músicas
 @login_required
 def listar_musicas(request):
     musicas = Musica.objects.filter(usuario=request.user)
@@ -61,7 +59,7 @@ def cadastro(request):
         if formulario.is_valid():
             usuario = formulario.save()
             login(request, usuario) # Loga o usuário após o cadastro
-            return redirect('homepage')
+            return redirect('atualizar_dados')
     else:
         formulario = UserCreationForm()
     contexto = {'form': formulario }
@@ -75,18 +73,20 @@ def logout_usuario(request):
 
 @login_required
 def perfil(request):
-    perfil, created = Perfil.objects.get_or_create(user=request.user)
+    perfil, _ = Perfil.objects.get_or_create(user=request.user)
+    contexto = {'perfil': perfil,}
+    return render(request, 'seguranca/perfil.html', contexto)
 
+
+@login_required
+def atualizar_dados(request):
     if request.method == 'POST':
-        form = PerfilForm(request.POST, instance=perfil)
+        form = AtualizarUsuarioForm(request.POST, instance=request.user, user=request.user)
         if form.is_valid():
             form.save()
             return redirect('perfil')
     else:
-        form = PerfilForm(instance=perfil)
+        form = AtualizarUsuarioForm(instance=request.user, user=request.user)
 
-    contexto = {
-        'perfil': perfil,
-        'form': form,
-    }
-    return render(request, 'seguranca/perfil.html', contexto)
+    contexto = {'form': form,}
+    return render(request, 'seguranca/atualizar_dados.html', contexto)

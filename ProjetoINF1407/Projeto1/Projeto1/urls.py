@@ -34,16 +34,16 @@ urlpatterns = [
         'seguranca/password_change/', 
         PasswordChangeView.as_view(
             template_name='seguranca/password_change_form.html',
-            success_url=reverse_lazy('sec-password_change_done'),
+            success_url=reverse_lazy('password_change_done'),
         ),
-        name='sec-password_change'
+        name='password_change'
     ),
     path(
         'seguranca/password_change_done/',
         PasswordChangeDoneView.as_view(
             template_name='seguranca/password_change_done.html',
         ),
-        name='sec-password_change_done'
+        name='password_change_done'
     ),
 ]
 

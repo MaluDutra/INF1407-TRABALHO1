@@ -27,24 +27,11 @@
         </div>
 
         <div class="profile-body">
-            <form method="post" class="profile-form">
-                {% csrf_token %}
-
-                <div class="form-group">
-                    <label for="{{ form.foto_url.id_for_label }}">Foto de perfil</label>
-                    {{ form.foto_url }}
-                    {% if form.foto_url.errors %}
-                        <div class="field-error">{{ form.foto_url.errors }}</div>
-                    {% endif %}
-                </div>
-
-                <button type="submit" class="btn btn-primary profile-button">
-                    Salvar foto
-                </button>
-            </form>
-
             <div class="profile-actions">
-                <a href="{% url 'sec-password_change' %}" class="btn btn-secondary">
+                <a href="{% url 'atualizar_dados' %}" class="btn btn-primary">
+                    Atualizar dados
+                </a>
+                <a href="{% url 'password_change' %}" class="btn btn-secondary">
                     Trocar senha
                 </a>
                 <a href="{% url 'listar_musicas' %}" class="btn btn-secondary">
@@ -52,6 +39,9 @@
                 </a>
                 <a href="{% url 'homepage' %}" class="btn btn-secondary">
                     Voltar ao início
+                </a>
+                <a href="{% url 'meu-logout' %}" class="btn btn-secondary">
+                    Sair
                 </a>
             </div>
         </div>
