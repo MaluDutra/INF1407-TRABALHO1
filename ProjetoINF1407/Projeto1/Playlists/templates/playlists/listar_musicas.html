@@ -28,6 +28,7 @@
                     {% if musica.album %} | Álbum: {{ musica.album }} {% endif %}
                     {% if musica.genero %} | Gênero: {{ musica.genero }} {% endif %}
                     {% if musica.ano %} | Ano: {{ musica.ano }} {% endif %}
+                    {% if musica.link_musica %} | <a href="{{ musica.link_musica }}" target="_blank">Ouvir música</a> {% endif %}
 
                     <a href="{% url 'editar_musica' musica.id %}">Editar</a>
                     <a href="{% url 'remover_musica' musica.id %}">Remover</a>

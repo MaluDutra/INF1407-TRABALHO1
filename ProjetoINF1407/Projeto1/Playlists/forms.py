@@ -6,13 +6,18 @@ from Playlists.models import Musica
 class MusicaForm(forms.ModelForm):
     class Meta:
         model = Musica
-        fields = ['titulo', 'artista', 'album', 'genero', 'ano', 'imagem_url']
+        fields = ['titulo', 'artista', 'album', 'genero', 'ano', 'imagem_url', 'link_musica']
         labels = {
-            'imagem_url': 'URL da capa da música'
+            'imagem_url': 'URL da capa da música',
+            'link_musica': 'Link para ouvir a música'
         }
         widgets = {
             'imagem_url': forms.URLInput(attrs={
                 'placeholder': 'Cole aqui o link da capa da música',
+                'class': 'form-control'
+            }),
+            'link_musica': forms.URLInput(attrs={
+                'placeholder': 'Cole aqui o link para ouvir a música',
                 'class': 'form-control'
             })
         }
