@@ -78,8 +78,8 @@
     );
     border: 1px solid rgba(242, 120, 149, 0.14);
     border-radius: 18px;
-    padding: 18px 20px;
-    margin-bottom: 22px;
+    padding: 14px 18px; 
+    margin-bottom: 20px;
 }
 
 .favorite-label {
@@ -90,20 +90,6 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 10px;
-}
-
-.favorite-title {
-    color: #f5f5f5;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 4px 0;
-}
-
-.favorite-artist {
-    color: #aeb4c7;
-    font-size: 16px;
-    margin: 0;
 }
 
 .favorite-empty {
@@ -232,4 +218,32 @@
         width: 100%;
         min-width: 0;
     }
+}
+
+.favorite-music {
+    display: flex;
+    align-items: center; 
+    gap: 16px;
+}
+
+.favorite-image {
+    width: 65px; 
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-right: 0; 
+}
+
+.favorite-title {
+    color: #f5f5f5;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 2px 0;
+}
+
+.favorite-artist {
+    color: #aeb4c7;
+    font-size: 14px;
+    margin: 0;
 }

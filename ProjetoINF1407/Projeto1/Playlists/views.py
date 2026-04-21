@@ -134,7 +134,7 @@ def perfil(request):
     """
     perfil, _ = Perfil.objects.get_or_create(user=request.user)
     contexto = {'perfil': perfil}
-    return render(request, 'seguranca/perfil.html', contexto)
+    return render(request, 'playlists/perfil.html', contexto)
 
 
 @login_required
@@ -158,4 +158,4 @@ def atualizar_dados(request):
         form = AtualizarUsuarioForm(instance=request.user, user=request.user)
 
     contexto = {'form': form}
-    return render(request, 'seguranca/atualizar_dados.html', contexto)
+    return render(request, 'playlists/atualizar_dados.html', contexto)

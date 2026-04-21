@@ -51,6 +51,17 @@ a {
     color: #ffffff;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.25s;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1) drop-shadow(0 0 4px rgba(242, 120, 149, 0.5));
+}
+
 .site-nav {
     display: flex;
     align-items: center;
