@@ -140,8 +140,10 @@ Caso deseje excluir uma música da playlist, o usuário pode utilizar a funciona
 ### 10. Troca de senha
 O sistema possui uma funcionalidade específica para troca de senha, permitindo ao usuário atualizar suas credenciais de acesso.
 
-### 11. Redefinição de senha
-Caso o usuário esqueça sua senha, pode utilizar a funcionalidade de redefinição de senha disponibilizada pelo sistema.
+### 11. Redefinir senha
+Caso o usuário esqueça a senha, ele pode utilizar a funcionalidade de redefinição de senha.
+
+Ao solicitar essa ação, as instruções de redefinição são exibidas no terminal/console da aplicação. Assim, para utilizar corretamente essa funcionalidade em ambiente de desenvolvimento, é necessário observar a mensagem gerada no terminal.
 
 ### 12. Logout
 Ao finalizar o uso do sistema, o usuário pode sair da conta por meio da funcionalidade de logout.
@@ -163,6 +165,7 @@ Durante o desenvolvimento do projeto, foram testadas e funcionaram as seguintes 
 - seleção de música favorita;
 - salvamento de foto de perfil por URL;
 - troca de senha;
+- redefinição de senha com exibição das instruções no terminal;
 - navegação entre as principais páginas do sistema.
 
 ---
@@ -177,7 +180,7 @@ Até o momento da entrega, não foram identificadas falhas relevantes nas funcio
 - O projeto foi desenvolvido com foco em organização de playlists pessoais.
 - A foto de perfil é armazenada por meio de URL.
 - A música favorita é selecionada entre as músicas cadastradas pelo próprio usuário.
-- O sistema foi desenvolvido com interface estilizada e páginas personalizadas para melhorar a experiência do usuário.
+- A funcionalidade de redefinição de senha exibe as instruções no terminal/console da aplicação.
 
 ---
 
@@ -188,6 +191,12 @@ Até o momento da entrega, não foram identificadas falhas relevantes nas funcio
 3. Instalar o Django.
 4. Rodar as migrações.
 5. Executar o servidor local.
+
+
+### Link para o site hospedado no render
+
+https://inf1407-trabalho1.onrender.com/
+
 
 ### Comandos
 
@@ -200,3 +209,5 @@ source venv/bin/activate
 (venv) python manage.py makemigrations
 (venv) python manage.py migrate
 (venv) python manage.py runserver
+
+
