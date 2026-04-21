@@ -9,14 +9,16 @@
 
 {% block conteudo %}
 <section class="profile-section">
-    <div class="profile-card">
-        <div class="profile-header">
-            <h2>Editar Dados do Usuário</h2>
-            <p class="profile-username">@{{ user.username }}</p>
+    <div class="profile-card edit-card">
+        <div class="profile-header edit-header">
+            <div class="edit-title-group">
+                <h2>Editar Dados do Usuário</h2>
+                <p class="profile-username">@{{ user.username }}</p>
+            </div>
         </div>
 
         <div class="profile-body">
-            <form method="post" class="profile-form">
+            <form method="post" class="profile-form edit-form">
                 {% csrf_token %}
 
                 <div class="form-group">
@@ -51,11 +53,11 @@
                     {% endif %}
                 </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary profile-button">
+                <div class="form-actions edit-actions">
+                    <button type="submit" class="btn btn-primary edit-btn">
                         Salvar alterações
                     </button>
-                    <a href="{% url 'perfil' %}" class="btn btn-secondary">
+                    <a href="{% url 'perfil' %}" class="btn btn-secondary edit-btn">
                         Cancelar
                     </a>
                 </div>
