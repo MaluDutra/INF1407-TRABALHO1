@@ -1,18 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ acao }} Música</title>
-</head>
-<body>
-    <h1>{{ acao }} Música</h1>
+{% extends 'seguranca/base.html' %}
+{% load static %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
+{% block titulo %}{{ acao }} Música{% endblock %}
 
-    <a href="{% url 'listar_musicas' %}">Voltar</a>
-</body>
-</html>
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<section class="auth-section">
+    <div class="auth-card">
+        <div class="auth-icon-box">♪</div>
+
+        <h2 class="auth-title">{{ acao }} Música</h2>
+        <p class="auth-subtitle">Preencha os detalhes da música abaixo</p>
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="field-error">{{ field.errors }}</div>
+                    {% endif %}
+                    {% if field.help_text %}
+                        <small class="custom-help">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="{% url 'listar_musicas' %}" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

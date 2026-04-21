@@ -1,0 +1,141 @@
+.music-list {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.music-item {
+    display: flex;
+    align-items: center;
+    background: rgba(20, 24, 38, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: 0.25s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.music-item:hover {
+    border-color: rgba(242, 120, 149, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.music-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.music-info {
+    flex: 1;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.music-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f5f5f5;
+    margin-bottom: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.music-artist {
+    color: #b5b9c8;
+    margin-bottom: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.music-details {
+    color: #81879b;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.music-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.play-icon {
+    font-size: 28px;
+    color: #f27895;
+    text-decoration: none;
+    transition: 0.25s;
+    margin-right: 20px;
+}
+
+.play-icon:hover {
+    color: #ff8aa8;
+    transform: scale(1.1);
+}
+
+.action-link {
+    color: #f27895;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.25s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.action-link:hover {
+    color: #ff8aa8;
+}
+
+.no-music {
+    text-align: center;
+    color: #81879b;
+    font-size: 18px;
+    margin-top: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.music-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+.music-header .title-section {
+    flex: 1;
+}
+.music-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #f5f5f5;
+    margin-bottom: 10px;
+}
+.music-header p {
+    color: #81879b;
+    font-size: 17px;
+    margin-bottom: 0;
+}
+.music-header .btn {
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 12px;
+}
+
+.open-image {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    margin-left: 5px;
+    margin-top: 3px;
+    transition: 0.25s;
+}
+
+.open-image:hover {
+    width: 19px;
+    height: 19px;
+    filter: brightness(0) invert(1) brightness(1.2);
+}

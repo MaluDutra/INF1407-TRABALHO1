@@ -68,7 +68,9 @@
 
 .auth-form input[type="text"],
 .auth-form input[type="password"],
-.auth-form input[type="email"] {
+.auth-form input[type="email"],
+.auth-form input[type="number"],
+.auth-form input[type="url"] {
     width: 100%;
     padding: 16px 18px;
     border-radius: 14px;
@@ -293,4 +295,11 @@
     transition: 0.25s;
     cursor: pointer;
     border: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
 }
