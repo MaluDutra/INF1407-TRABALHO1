@@ -145,7 +145,7 @@ PORTA_DJANGO = utils.detectar_porta()
 AMBIENTE = utils.detectar_ambiente()
 PROTOCOLO = utils.detectar_protocolo()
 DOMINIO = utils.detectar_dominio()
-
+    
 if AMBIENTE == "CODESPACE":
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https',)
     USE_X_FORWARDED_HOST = True
@@ -153,6 +153,11 @@ if AMBIENTE == "CODESPACE":
 elif AMBIENTE == "LOCAL":
     # Configurações para rodar localmente
     CS_DOMAIN = f"localhost:{PORTA_DJANGO}"
+else:
+    # Se não for local nem Codespace, assume que é produção (Render)
+    # Tenta pegar o domínio das variáveis de ambiente do Render
+    CS_DOMAIN = os.getenv('CS_DOMAIN', DOMINIO)
+    
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'MeuSite API',
