@@ -66,8 +66,14 @@ Cada música pode conter:
 - ano de lançamento;
 - imagem por URL;
 - link para ouvir a música;
-- música favorita associada ao perfil do usuário.
 
+### Dados do usuário
+Cada usuário pode possuir:
+- nome de usuário;
+- e-mail;
+- senha;
+- foto de perfil por URL;
+- música favorita;
 ---
 
 ## Navegação do Site
