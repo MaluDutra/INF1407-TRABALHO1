@@ -155,8 +155,7 @@ elif AMBIENTE == "LOCAL":
     CS_DOMAIN = f"localhost:{PORTA_DJANGO}"
 else:
     # Se não for local nem Codespace, assume que é produção (Render)
-    # Tenta pegar o domínio das variáveis de ambiente do Render
-    CS_DOMAIN = os.getenv('CS_DOMAIN', DOMINIO)
+    CS_DOMAIN = DOMINIO 
     
 
 SPECTACULAR_SETTINGS = {
