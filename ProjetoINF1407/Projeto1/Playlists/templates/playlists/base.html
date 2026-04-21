@@ -11,10 +11,12 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="logo-area">
-            <div class="logo-icon">♪</div>
-            <span class="logo-text">Songlist</span>
-        </div>
+        <a href="{% url 'homepage' %}" class="logo-link">
+            <div class="logo-area">
+                <div class="logo-icon">♪</div>
+                <span class="logo-text">Songlist</span>
+            </div>
+        </a>
 
         <nav class="site-nav">
             <a href="{% url 'homepage' %}" class="nav-link">Início</a>

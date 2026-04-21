@@ -1,4 +1,4 @@
-{% extends 'seguranca/base.html' %}
+{% extends 'playlists/base.html' %}
 {% load static %}
 
 {% block titulo %}Meu Perfil{% endblock %}
@@ -30,8 +30,17 @@
             <span class="favorite-label">Música favorita</span>
 
             {% if perfil.musica_favorita %}
-                <p class="favorite-title">{{ perfil.musica_favorita.titulo }}</p>
-                <p class="favorite-artist">{{ perfil.musica_favorita.artista }}</p>
+                <div class="favorite-music">
+                    {% if perfil.musica_favorita.imagem_url %}
+                        <img src="{{ perfil.musica_favorita.imagem_url }}" alt="Imagem de {{ perfil.musica_favorita.titulo }}" class="favorite-image">
+                    {% else %}
+                        <img src="/static/images/default-music.jpg" alt="Imagem padrão" class="favorite-image">
+                    {% endif %}
+                    <div class="favorite-info">
+                        <p class="favorite-title">{{ perfil.musica_favorita.titulo }}</p>
+                        <p class="favorite-artist">{{ perfil.musica_favorita.artista }}</p>
+                    </div>
+                </div>
             {% else %}
                 <p class="favorite-empty">Nenhuma música favorita selecionada.</p>
             {% endif %}
