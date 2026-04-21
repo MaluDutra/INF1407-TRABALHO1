@@ -1,42 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Minhas Músicas</title>
-</head>
-<body>
-    <h1>Minhas Músicas</h1>
+{% extends 'seguranca/base.html' %}
+{% load static %}
 
-    <p>Olá, {{ user.username }}!</p>
+{% block titulo %}Minhas Músicas{% endblock %}
 
-    <a href="{% url 'adicionar_musica' %}">Adicionar música</a>
-    <a href="{% url 'meu-logout' %}">Sair</a>
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/music.css' %}">
+{% endblock %}
 
-    <hr>
+{% block conteudo %}
+<section class="music-list">
+    <div class="music-header">
+        <div class="title-section">
+            <h1>Minhas Músicas</h1>
+            <p>Olá, {{ user.username }}! Aqui estão suas músicas cadastradas.</p>
+        </div>
+        <a href="{% url 'adicionar_musica' %}" class="btn btn-primary">Adicionar música</a>
+    </div>
 
     {% if musicas %}
-        <ul>
-            {% for musica in musicas %}
-                <li>
-                    {% if musica.imagem_url %}
-                        <img src="{{ musica.imagem_url }}" alt="Imagem de {{ musica.titulo }}" width="120" height="120">
-                    {% else %}
-                        <img src="/static/images/default-music.jpg" alt="Imagem padrão de música" width="120" height="120">
-                    {% endif %}
+        {% for musica in musicas %}
+            <div class="music-item">
+                {% if musica.imagem_url %}
+                    <img src="{{ musica.imagem_url }}" alt="Imagem de {{ musica.titulo }}" class="music-image">
+                {% else %}
+                    <img src="/static/images/default-music.jpg" alt="Imagem padrão de música" class="music-image">
+                {% endif %}
 
-                    <strong>{{ musica.titulo }}</strong> - {{ musica.artista }}
-                    {% if musica.album %} | Álbum: {{ musica.album }} {% endif %}
-                    {% if musica.genero %} | Gênero: {{ musica.genero }} {% endif %}
-                    {% if musica.ano %} | Ano: {{ musica.ano }} {% endif %}
-                    {% if musica.link_musica %} | <a href="{{ musica.link_musica }}" target="_blank">Ouvir música</a> {% endif %}
+                <div class="music-info">
+                    <div class="music-title">
+                        {{ musica.titulo }}
+                        {% if musica.link_musica %}
+                            <a href="{{ musica.link_musica }}" target="_blank" title="Ouvir música">
+                                <img src="/static/images/open.png" alt="Ouvir música em outra aba" class="open-image">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="music-artist">{{ musica.artista }}</div>
+                    <div class="music-details">
+                        {% if musica.album %}Álbum: {{ musica.album }}{% endif %}
+                        {% if musica.genero %} | Gênero: {{ musica.genero }}{% endif %}
+                        {% if musica.ano %} | Ano: {{ musica.ano }}{% endif %}
+                    </div>
+                </div>
 
-                    <a href="{% url 'editar_musica' musica.id %}">Editar</a>
-                    <a href="{% url 'remover_musica' musica.id %}">Remover</a>
-                </li>
-            {% endfor %}
-        </ul>
+                <div class="music-actions">
+                    <a href="{% url 'editar_musica' musica.id %}" class="action-link">Editar</a>
+                    <a href="{% url 'remover_musica' musica.id %}" class="action-link">Remover</a>
+                </div>
+            </div>
+        {% endfor %}
     {% else %}
-        <p>Você ainda não cadastrou músicas.</p>
+        <p class="no-music">Você ainda não cadastrou músicas.</p>
     {% endif %}
-</body>
-</html>
+</section>
+{% endblock %}

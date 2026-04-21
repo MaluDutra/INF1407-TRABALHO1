@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Remover Música</title>
-</head>
-<body>
-    <h1>Remover Música</h1>
+{% extends 'seguranca/base.html' %}
+{% load static %}
 
-    <p>Tem certeza que deseja remover "{{ musica.titulo }}" de {{ musica.artista }}?</p>
+{% block titulo %}Remover Música{% endblock %}
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Sim, remover</button>
-    </form>
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
 
-    <a href="{% url 'listar_musicas' %}">Cancelar</a>
-</body>
-</html>
+{% block conteudo %}
+<section class="auth-section">
+    <div class="auth-card">
+        <div class="auth-icon-box">⚠</div>
+
+        <h2 class="auth-title">Remover Música</h2>
+        <p class="auth-subtitle">Tem certeza que deseja remover "{{ musica.titulo }}" de {{ musica.artista }}?</p>
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Sim, remover</button>
+                <a href="{% url 'listar_musicas' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

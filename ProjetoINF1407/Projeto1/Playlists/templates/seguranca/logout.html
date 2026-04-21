@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-<html>
+{% extends 'seguranca/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Logout</title>
-</head>
+{% block titulo %}Logout{% endblock %}
 
-<body>
-    <h1>Logout</h1>
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
 
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <input type="submit" value="Logout">
-    </form>
-</body>
+{% block conteudo %}
+<section class="auth-section">
+    <div class="auth-card">
+        <div class="auth-icon-box">🚪</div>
 
-</html>
+        <h2 class="auth-title">Logout</h2>
+        <p class="auth-subtitle">Confirme se você quer sair da sua conta</p>
+
+        <form method="post" action="{% url 'logout' %}" class="auth-form">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Sair</button>
+                <a href="{% url 'listar_musicas' %}" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
