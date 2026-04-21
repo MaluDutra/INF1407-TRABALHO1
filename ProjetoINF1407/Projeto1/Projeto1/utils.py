@@ -1,3 +1,5 @@
+# Este código abaixo foi retirado do repositório: https://github.com/AlexandreMeslin/INF1407 #############################
+
 # Detecta automaticamente o ambiente:
 # ✔ Localhost
 # ✔ GitHub Codespaces
@@ -175,3 +177,5 @@ if __name__ == "__main__":
     print(f"Domínio detectado: {detectar_dominio()}")
     print(f"Protocolo detectado: {detectar_protocolo()}")
     print(f'Porta detectada: {detectar_porta()}')
+
+############################################################################################################

@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-)8f%i)tzsv5s14&omfbfgknitg(g6fr095=u_5*b_iscqq1(h4"
+SECRET_KEY = os.getenv('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -123,6 +123,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+# Variáveis para onde o Django deve redirecionar após login/logout
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'homepage'
 LOGOUT_REDIRECT_URL = 'login'
@@ -135,6 +136,8 @@ DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+# Este trecho de código abaixo foi retirado do repositório: https://github.com/AlexandreMeslin/INF1407 #############################
 
 # Verificar a porta passada como argumento ou usar a porta padrão
 # Usada para configurar o domínio no Codespace, mas também pode ser útil para rodar localmente em uma porta diferente da 8000
@@ -162,3 +165,4 @@ SPECTACULAR_SETTINGS = {
     ]
 }
 
+#####################################################################################################
