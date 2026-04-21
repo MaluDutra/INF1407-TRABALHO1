@@ -25,12 +25,18 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+    "inf1407-trabalho1.onrender.com",
+    "127.0.0.1",
+    "localhost",
+]
 
 # Lista de domínios confiáveis
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
     'http://localhost:8000',
+    'https://inf1407-trabalho1.onrender.com'
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
