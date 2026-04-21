@@ -6,8 +6,8 @@
 {% block css_extra %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
-
 {% block conteudo %}
+
 <section class="profile-section">
     <div class="profile-card">
         <div class="profile-header">
@@ -26,36 +26,27 @@
             </div>
         </div>
 
-        <div class="profile-body">
-            {% if perfil.musica_favorita %}
-                <div class="profile-detail">
-                    <strong>Música favorita:</strong>
-                    <p>{{ perfil.musica_favorita.titulo }} - {{ perfil.musica_favorita.artista }}</p>
-                </div>
-            {% else %}
-                <div class="profile-detail">
-                    <strong>Música favorita:</strong>
-                    <p>Nenhuma música favorita selecionada.</p>
-                </div>
-            {% endif %}
+        <div class="favorite-card">
+            <span class="favorite-label">Música favorita</span>
 
-            <div class="profile-actions">
-                <a href="{% url 'atualizar_dados' %}" class="btn btn-primary">
-                    Atualizar dados
-                </a>
-                <a href="{% url 'password_change' %}" class="btn btn-secondary">
-                    Trocar senha
-                </a>
-                <a href="{% url 'listar_musicas' %}" class="btn btn-secondary">
-                    Ver músicas
-                </a>
-                <a href="{% url 'homepage' %}" class="btn btn-secondary">
-                    Voltar ao início
-                </a>
-                <a href="{% url 'meu-logout' %}" class="btn btn-secondary">
-                    Sair
-                </a>
-            </div>
+            {% if perfil.musica_favorita %}
+                <p class="favorite-title">{{ perfil.musica_favorita.titulo }}</p>
+                <p class="favorite-artist">{{ perfil.musica_favorita.artista }}</p>
+            {% else %}
+                <p class="favorite-empty">Nenhuma música favorita selecionada.</p>
+            {% endif %}
+        </div>
+
+        <div class="profile-actions">
+            <a href="{% url 'atualizar_dados' %}" class="btn btn-primary profile-btn">
+                Atualizar dados
+            </a>
+            <a href="{% url 'password_change' %}" class="btn btn-secondary profile-btn">
+                Trocar senha
+            </a>
+            <a href="{% url 'listar_musicas' %}" class="btn btn-secondary profile-btn">
+                Ver músicas
+            </a>
         </div>
     </div>
 </section>
